@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+var path = require('path')
+
+var nestest = require('./index.js')
+
+nestest.command = path.join(__dirname, 'node_modules/.bin/json')
+nestest.args = ['-f', 'package.json', 'name']
+nestest.bootstrap()

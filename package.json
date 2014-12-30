@@ -1,0 +1,38 @@
+{
+  "name": "nestest",
+  "version": "0.0.1",
+  "description": "Test nested node packages with `npm test`",
+  "bin": "bin",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zzmp/nestest.git"
+  },
+  "keywords": [
+    "nest",
+    "nested",
+    "test",
+    "npm",
+    "test",
+    "node",
+    "package"
+  ],
+  "author": "Zach Pomerantz <zmp@umich.edu> (http://garabagne.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zzmp/nestest/issues"
+  },
+  "homepage": "https://github.com/zzmp/nestest",
+  "dependencies": {
+    "bluebird": "^2.5.2",
+    "chalk": "^0.5.1",
+    "find": "^0.1.7",
+    "npm": "*"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
+}
