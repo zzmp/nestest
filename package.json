@@ -1,6 +1,6 @@
 {
   "name": "nestest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Test nested node packages with `npm test`",
   "bin": "bin",
   "main": "index.js",
