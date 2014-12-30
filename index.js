@@ -33,8 +33,8 @@ function descend(dir, iterator) {
   return new Promise(function(resolve) {
     fs.readdir(dir, function(err, files) {
       hasPackage(dir, files)
-        .then(doCommand)
-        .finally(function() { 
+        .then(doCommand).catch(nop)
+        .then(function() { 
           return Promise.each(files, function(file) {
             if ((/^(.git|node_modules)$/).test(file)) return
             else return new Promise(function(resolve) {
@@ -74,3 +74,5 @@ function fail(err) {
   console.error(chalk.red(err))
   process.exit(1)
 }
+
+function nop() {}
