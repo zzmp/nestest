@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var nestest = require('./index.js')
+
+nestest.command = require.resolve('npm/bin/npm-cli.js')
+nestest.args = ['i']
+nestest.bootstrap()

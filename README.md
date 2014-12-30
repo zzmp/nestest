@@ -16,7 +16,7 @@ Instead, include `nestest` in the top packages nesting script, and `npm test` wi
 
 ## API
 
-If you want to run other commands recursively on nested subpackages, take a look at `echo-name`. You can change both the command and the argument:
+If you want to run other commands recursively on nested subpackages, take a look at `echo-name` or `install`. You can change both the command and the argument:
 
 ```js
 var nestest = require('./index.js')
