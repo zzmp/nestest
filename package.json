@@ -5,7 +5,7 @@
   "bin": "bin",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js; npm link -s; nestest"
   },
   "repository": {
     "type": "git",

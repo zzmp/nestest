@@ -11,6 +11,9 @@ module.exports = {
 }
 
 function doCommand(dir) {
+  if (/npm$/.test(module.exports.command))
+    if (isLoop(dir)) return Promise.resolve()
+
   var npmTest = spawn(module.exports.command, module.exports.args, { cwd: dir })
 
   npmTest.stdout.on('data', function(data) { console.log(data.toString()) })
@@ -33,7 +36,7 @@ function descend(dir, iterator) {
         .then(doCommand)
         .finally(function() { 
           return Promise.each(files, function(file) {
-            if (file.match(/^(.git|node_modules)$/)) return
+            if ((/^(.git|node_modules)$/).test(file)) return
             else return new Promise(function(resolve) {
               var filePath = path.join(dir, file)
               
@@ -54,6 +57,17 @@ function hasPackage(dir, files) {
   return new Promise(function(resolve, reject) {
     (~files.indexOf('package.json')) ? resolve(dir) : reject()
   })
+}
+
+function isLoop(dir) {
+  var script = /^run(|-script)$/.test(module.exports.args[0]) ?
+    module.exports.args[1] : module.exports.args[0]
+  var scripts = require(path.join(dir, 'package.json')).scripts
+
+  for (var key in scripts) {
+    if ((new RegExp('[(pre|post)]*' + script)).test(key) && /nestest/.test(scripts[key]))
+      return true
+  }
 }
 
 function fail(err) {
